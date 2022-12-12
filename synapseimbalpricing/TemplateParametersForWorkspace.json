@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "synapseimbalpricing"
+		},
+		"ls_sql_db_connectionString": {
+			"value": ""
+		},
+		"synapseimbalpricing-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapseimbalpricing.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"ls_http_service_properties_typeProperties_url": {
+			"value": "https://query1.finance.yahoo.com/"
+		},
+		"ls_rest_yahoo_opendata_properties_typeProperties_url": {
+			"value": "https://query1.finance.yahoo.com/"
+		},
+		"synapseimbalpricing-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://adl2imbalancepricing.dfs.core.windows.net"
+		}
+	}
+}
