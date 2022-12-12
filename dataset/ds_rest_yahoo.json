@@ -1,0 +1,16 @@
+{
+	"name": "ds_rest_yahoo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_rest_yahoo_opendata",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": "v7/finance/download/GBPEUR=X?period1=1640995200&period2=1670371200&interval=1d&events=history&includeAdjustedClose=true"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

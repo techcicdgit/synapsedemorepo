@@ -1,0 +1,17 @@
+{
+	"name": "CONFIGURATION TABLE IMBALANCE PRICING",
+	"properties": {
+		"content": {
+			"query": "-- CREATE SCHEMA\nCREATE SCHEMA CONFIGURATION\n\n-- DROP TABLES\nDROP TABLE[CONFIGURATION].[DATASOURCES]\n\n--DATABASE\n\nUSE DATABASE ddsqlpool_synapse\n\n-- DATA SOURCES\n\nCREATE TABLE [CONFIGURATION].[DATASOURCES]\n(\n    [PipelineType] [varchar] (255) NULL,\n    [ConnectorType] [varchar] (255) NULL,\n    [FetchFrequency] [varchar] (255) NULL,\n    [DataSource] [varchar] (255) NULL,\n    [SourcePath] [varchar] (255) NULL,\n    [SourceName] [varchar] (255) NULL,\n    [SourceExtension] [varchar] (255) NULL,\n    [Separator] [varchar] (255) NULL,\n    [FileEncoding] [varchar] (255) NULL\n)\nWITH\n\n(\nDISTRIBUTION = REPLICATE,\nCLUSTERED COLUMNSTORE INDEX\n)\nGO\n\nINSERT INTO [CONFIGURATION].[DATASOURCES] (PipelineType,ConnectorType,FetchFrequency,DataSource,SourcePath,SourceName,SourceExtension,Separator,FileEncoding)\nVALUES ('API', 'REST-ANONYMOUS-GET', 'daily', 'BMRS', 'https://api.bmreports.com/BMRS/PHYBMDATA/v1?APIKey=idiab5bwsvvo5a7&SettlementDate=2022-12-04&SettlementPeriod=24&ServiceType=csv', 'DS7Generations', 'csv', ',', 'UTF-8')\nGO\n\nSELECT * FROM [CONFIGURATION].[DATASOURCES]\n\n-- DATA MAPPING\n\nCREATE TABLE [CONFIGURATION].[DATAMAPPING]\n(\n [DataSource] [varchar] (255) NULL,\n [Sourcecolumn] [varchar] (255) NULL,\n [SourceColumnType] [varchar] (255) NULL,\n [TargetTable] [varchar] (255) NULL,\n [TargetColumn] [varchar] (255) NULL,\n [TargetColumnType] [varchar] (255) NULL,\n [ValidationRules] [varchar] (255) NULL,\n [StandarddizationRules] [varchar] (1000) NULL,\n [IsPK] [bit] NULL\n)\nWITH\n(\n    DISTRIBUTION = REPLICATE,\n    CLUSTERED COLUMNSTORE INDEX\n)\nGO\n\n-- Assets\n\nINSERT INTO [CONFIGURATION].[DATAMAPPING] (DataSource,Sourcecolumn,SourceColumnType,TargetTable,TargetColumn,TargetColumnType,ValidationRules,StandarddizationRules,IsPK)\nVALUES ('BMRS.DS7Generations', 'DS7Gen', 'str', 'DS7GenCurated','DS7Gen', 'str', 'isComplete', '', 0)\n\nSELECT * FROM [CONFIGURATION].[DATAMAPPING] WHERE DataSource = 'BMRS.DS7Generations'\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "ddsqlpool_synapse",
+				"poolName": "ddsqlpool_synapse"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

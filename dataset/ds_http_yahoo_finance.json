@@ -1,0 +1,23 @@
+{
+	"name": "ds_http_yahoo_finance",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_http_service",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "v7/finance/download/GBPEUR=X?period1=1640995200&period2=1670371200&interval=1d&events=history&includeAdjustedClose=true"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}
