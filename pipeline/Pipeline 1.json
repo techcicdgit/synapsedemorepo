@@ -25,15 +25,12 @@
 						}
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
+						"type": "RestSink",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": 10,
+						"requestMethod": "POST",
+						"writeBatchSize": 10000,
+						"httpCompressionType": "none"
 					},
 					"enableStaging": false
 				},
@@ -45,7 +42,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "ds_yahoo_http",
+						"referenceName": "ds_rest_yahoo",
 						"type": "DatasetReference"
 					}
 				]
