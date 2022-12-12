@@ -11,6 +11,9 @@
 		"synapseimbalpricing-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synapseimbalpricing.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
 		},
+		"HttpServer1_properties_typeProperties_url": {
+			"value": "@{linkedService().BaseURL}"
+		},
 		"ls_http_service_properties_typeProperties_url": {
 			"value": "https://query1.finance.yahoo.com/"
 		},
