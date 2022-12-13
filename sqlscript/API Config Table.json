@@ -1,0 +1,17 @@
+{
+	"name": "API Config Table",
+	"properties": {
+		"content": {
+			"query": "-- DATA SOURCE\n\nINSERT INTO [CONFIGURATION].[DATASOURCES] (PipelineType, ConnectorType, FetchFrequency, DataSource, SourcePath, SourceName, SourceExtension, Separator,FileEncoding)\nVALUES ('API', 'REST-ANONYMOUS-GET', 'daily', 'YahooFinance', 'https://query1.finance.yahoo.com/v7/finance/download/GBPEUR=X?period1=1640995200&period2=1670371200&interval=1d&events=history&includeAdjustedClose=true', 'GBP_EURO', 'csv', ',', 'UTF-8') \n\n\nINSERT INTO [CONFIGURATION].[DataMapping] (DataSource, SourceColumn, SourceColumnType, TargetTable, TargetColumn, TargetColumnType, ValidationRules, StandarddizationRules, IsPK)\nVALUES ('YahooFinace.GBP_EURO', 'Date', 'timestamp', 'GBP_EURO_Curated', 'Date', 'timestamp', 'isComplete', 'conformToDate', 1) \n\nINSERT INTO [CONFIGURATION].[DataMapping] (DataSource, SourceColumn, SourceColumnType, TargetTable, TargetColumn, TargetColumnType, ValidationRules, StandarddizationRules, IsPK)\nVALUES ('YahooFinace.GBP_EURO', 'Open', 'float', 'GBP_EURO_Curated', 'GBP_EURO', 'float', 'isComplete', '', 0) \n\nINSERT INTO [CONFIGURATION].[DataMapping] (DataSource, SourceColumn, SourceColumnType, TargetTable, TargetColumn, TargetColumnType, ValidationRules, StandarddizationRules, IsPK)\nVALUES ('YahooFinace.GBP_EURO', 'High', 'float', 'GBP_EURO_Curated', 'GBP_EURO', 'float', 'isComplete', '', 0) \n\nINSERT INTO [CONFIGURATION].[DataMapping] (DataSource, SourceColumn, SourceColumnType, TargetTable, TargetColumn, TargetColumnType, ValidationRules, StandarddizationRules, IsPK)\nVALUES ('YahooFinace.GBP_EURO', 'Low', 'float', 'GBP_EURO_Curated', 'GBP_EURO', 'float', 'isComplete', '', 0) \n\nINSERT INTO [CONFIGURATION].[DataMapping] (DataSource, SourceColumn, SourceColumnType, TargetTable, TargetColumn, TargetColumnType, ValidationRules, StandarddizationRules, IsPK)\nVALUES ('YahooFinace.GBP_EURO', 'Close', 'float', 'GBP_EURO_Curated', 'GBP_EURO', 'float', 'isComplete', '', 0) \n\nINSERT INTO [CONFIGURATION].[DataMapping] (DataSource, SourceColumn, SourceColumnType, TargetTable, TargetColumn, TargetColumnType, ValidationRules, StandarddizationRules, IsPK)\nVALUES ('YahooFinace.GBP_EURO', 'AdjClose', 'float', 'GBP_EURO_Curated', 'GBP_EURO', 'float', 'isComplete', '', 0) \n\nINSERT INTO [CONFIGURATION].[DataMapping] (DataSource, SourceColumn, SourceColumnType, TargetTable, TargetColumn, TargetColumnType, ValidationRules, StandarddizationRules, IsPK)\nVALUES ('YahooFinace.GBP_EURO', 'Volume', 'str', 'GBP_EURO_Curated', 'GBP_EURO', 'str', 'isComplete', '', 0) \n\nselect * from [CONFIGURATION].[DataMapping]\nselect * FROM [CONFIGURATION].[DATASOURCES]\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "ddsqlpool_synapse",
+				"poolName": "ddsqlpool_synapse"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
