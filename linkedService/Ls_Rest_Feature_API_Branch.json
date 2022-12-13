@@ -1,0 +1,16 @@
+{
+	"name": "Ls_Rest_Feature_API_Branch",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://query1.finance.yahoo.com/v7/finance/download/GBPEUR=X?period1=1640995200&period2=1670371200&interval=1d&events=history&includeAdjustedClose=true",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
