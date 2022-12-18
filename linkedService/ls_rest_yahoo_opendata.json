@@ -1,11 +1,10 @@
 {
 	"name": "ls_rest_yahoo_opendata",
-	"type": "Microsoft.Synapse/workspaces/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "https://query1.finance.yahoo.com/",
+			"url": "https://api0.solar.sheffield.ac.uk/pvlive/api/v4/pes/10?start=2022-07-01T00:00:00&end=2022-07-02T00:00:0",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		},
@@ -13,5 +12,6 @@
 			"referenceName": "AutoResolveIntegrationRuntime",
 			"type": "IntegrationRuntimeReference"
 		}
-	}
+	},
+	"type": "Microsoft.Synapse/workspaces/linkedservices"
 }
